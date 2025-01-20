@@ -1,6 +1,8 @@
 package com.taller.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.util.Date;
@@ -16,9 +18,10 @@ public class Libro {
     private String titulo;
     @NotEmpty
     private String autor;
-    @NotEmpty
+    @Min(value = 1,message = "Haga bien oe")
     private int numPaginas;
-    @NotEmpty
+
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fechaPublicacion;
 
     public String getTitulo() {
